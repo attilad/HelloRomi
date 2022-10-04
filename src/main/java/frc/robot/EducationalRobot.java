@@ -7,10 +7,21 @@ package frc.robot;
 import edu.wpi.first.hal.HAL;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.RobotBase;
+import edu.wpi.first.wpilibj.XboxController;
 
 /** Educational robot base class. */
 public class EducationalRobot extends RobotBase {
-  public void robotInit() {}
+  private RomiDrivetrain m_Drivetrain;
+  private XboxController m_driverController;
+  
+
+  public void robotInit() 
+  {
+    m_Drivetrain = new RomiDrivetrain();
+    m_driverController = new XboxController(0);
+
+    m_Drivetrain.arcadeDrive(m_driverController.getLeftY(), m_driverController.getRightX());
+  }
 
   public void disabled() {}
 
